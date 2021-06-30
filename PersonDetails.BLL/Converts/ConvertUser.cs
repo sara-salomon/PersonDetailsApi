@@ -23,8 +23,13 @@ namespace PersonDetails.BLL.Converts
                 userDTO.Gender = "male";
             else
                 userDTO.Gender = "female";
-            //userDTO.Children = new List<ChildDTO>(user.Children);
-            //Collections.copy(userDTO.Children, user.Children);
+
+            foreach (var item in user.Children)
+            {
+                userDTO.Children.Add(ConvertChildTODTO(item));
+            }
+
+
             return userDTO;
 
         }
@@ -37,11 +42,33 @@ namespace PersonDetails.BLL.Converts
             userDal.BornDate = user.BornDate;
             userDal.HMO = user.HMO;
             userDal.Gender = user.Gender;
-            //foreach (var item in user.Children)
-            //{
-            //    userDal.Children.Add(item);
-            //}
+            if (user.Gender == "0")
+                userDal.Gender = "male";
+            else
+                userDal.Gender = "female";
+
+            foreach (var item in user.Children)
+            {
+                userDal.Children.Add(ConvertChild(item));
+            }
             return userDal;
+        }
+        public static DAL.Child ConvertChild(DTO.Child child)
+        {
+            DAL.Child c = new DAL.Child();
+            c.FirstName = child.FirstName;
+            c.Tz = child.Tz;
+            c.BornDate = child.BornDate;
+            return c;
+        }
+
+        public static DTO.Child ConvertChildTODTO(PersonDetails.DAL.Child child)
+        {
+            DTO.Child c = new DTO.Child();
+            c.FirstName = child.FirstName;
+            c.Tz = child.Tz;
+            c.BornDate = child.BornDate;
+            return c;
         }
     }
 }

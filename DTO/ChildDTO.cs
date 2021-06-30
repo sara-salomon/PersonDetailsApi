@@ -9,7 +9,7 @@ namespace DTO
   public class ChildDTO
     {
         public string FirstName { get; set; }
-        public int Tz { get; set; }
+        public string Tz { get; set; }
         public DateTime BornDate { get; set; }
     }
 }
