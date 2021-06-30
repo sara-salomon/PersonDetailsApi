@@ -14,7 +14,8 @@ namespace PersonDetails.DAL.FunctionsDal
             try
             {
                 User user;
-                string path = @"C:\תכנות תשפא\מקצועות\TestCitiBook\PersonDetailsApi\User.txt";
+               string path = @"C:\תכנות תשפא\מקצועות\TestCitiBook\PersonDetailsApi\User.txt";
+          
                 string fileUser;
                 using (StreamReader reader = File.OpenText(path))
                     while ((fileUser = reader.ReadLine()) != null)
@@ -32,6 +33,7 @@ namespace PersonDetails.DAL.FunctionsDal
         public static void PostUser(User p)
         {
             string path = @"C:\תכנות תשפא\מקצועות\TestCitiBook\PersonDetailsApi\User.txt";
+           
             FileStream myfile = new FileStream(path, FileMode.Create);
             try
             {
